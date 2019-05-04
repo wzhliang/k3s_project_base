@@ -22,9 +22,13 @@ cluster.vm.define "k3sm" do |config|
     ip: "172.16.2.6",
     virtualbox__intnet: true,
     nic_type: "virtio"
+  config.vm.network :forwarded_port, host: 16443, guest: 6443
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "site.yml"
+    ansible.verbose = true
     ansible.groups = {
+      "all" => ["k3sm"],
       "tag_PrivNet_True" => ["k3sm"],
       "tag_Vagrant_True" => ["k3sm"],
       "tag_cluster_true" => ["k3sm"],
