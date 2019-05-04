@@ -25,3 +25,16 @@
     state: present
     create: yes
     insertafter: EOF
+
+- name: "APT - install 'docker.io'"
+  apt:
+    name: "docker.io"
+    update_cache: yes
+
+- name: Prepare docker service proxy file
+  template:
+    src: "docker.j2"
+    dest: "/etc/default/docker"
+    owner: root
+    group: root
+    mode: 0644

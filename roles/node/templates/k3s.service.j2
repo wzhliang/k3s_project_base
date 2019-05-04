@@ -3,7 +3,7 @@ Description=Lightweight Kubernetes
 Documentation=https://k3s.io
 After=network.target
 [Service]
-ExecStart=/usr/local/bin/k3s agent --server https://{{ masterip }}:6443 --token {{ nodetoken2 }}
+ExecStart=/usr/local/bin/k3s agent --docker --server https://{{ masterip }}:6443 --token {{ nodetoken2 }}
 KillMode=process
 Delegate=yes
 LimitNOFILE=infinity

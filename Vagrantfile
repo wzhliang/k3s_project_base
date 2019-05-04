@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |cluster|
 
   # Every Vagrant virtual environment requires a box to build off of.
 cluster.vm.define "k3sm" do |config|
-  config.vm.box = "debian/stretch64"
+  config.vm.box = "bento/ubuntu-18.04"
   config.ssh.insert_key = true
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "4096"]
