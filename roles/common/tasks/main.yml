@@ -31,10 +31,8 @@
     name: "docker.io"
     update_cache: yes
 
-- name: Prepare docker service proxy file
-  template:
-    src: "docker.j2"
-    dest: "/etc/default/docker"
-    owner: root
-    group: root
-    mode: 0644
+- name: download pause image
+  command: docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1
+
+- name: Tag
+  command: docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1 k8s.gcr.io/pause:3.1
