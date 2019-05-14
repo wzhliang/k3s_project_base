@@ -23,6 +23,8 @@ cluster.vm.define "k3sm" do |config|
     virtualbox__intnet: true,
     nic_type: "virtio"
   config.vm.network :forwarded_port, host: 16443, guest: 6443
+  config.vm.network :forwarded_port, host: 18500, guest: 8500
+  config.vm.network :forwarded_port, host: 30080, guest: 30080
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "site.yml"
